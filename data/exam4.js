@@ -1,5 +1,8 @@
-const EXAM_QUESTIONS = 
-[
+const EXAM_QUESTIONS = {
+  examNumber: 4,
+  title: "Practice Exam 4",
+  description: "Core AWS services and cloud concepts",
+  questions = [
   {
     "questionNumber": 1,
     "questionText": "Which Amazon Route 53 routing policy would you use to route traffic to a single resource such as a web server for your website?",
@@ -801,4 +804,4 @@ const EXAM_QUESTIONS =
     "explanation": "Correct option: Amazon EC2 Instance Connect. It provides a browser-based SSH client. Putty is Windows-only (not browser-based), SSH is command-line not browser-based, Direct Connect is network connection.",
     "domain": "Cloud Concepts"
   }
-];
+]};
