@@ -1,7 +1,7 @@
 var EXAM_DATA = {
   examNumber: 4,
-  title: "Practice Exam 4",
-  description: "Cloud Concepts, Core AWS Services & Networking",
+  title: "Practice Test #4 - AWS Certified Cloud Practitioner",
+  description: "Full practice exam with 65 questions covering AWS Cloud Concepts, Technology, Security, and Billing & Pricing.",
   questions : [
   {
     "questionNumber": 1,

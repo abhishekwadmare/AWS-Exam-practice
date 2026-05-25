@@ -1,4 +1,4 @@
-# AWS Cloud Practitioner — Practice Exam Portal
+# AWS Cloud Practitioner : Practice Exam Portal
 
 A static, self-hosted exam portal for AWS CLF-C02 practice tests. No server required — runs entirely in the browser. Hosted via GitHub Pages.
 
