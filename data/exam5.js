@@ -1,8 +1,8 @@
-const EXAM_QUESTIONS = {
+var EXAM_DATA = {
   examNumber: 5,
   title: "Practice Exam 5",
-  description: "Core AWS services and cloud concepts",
-  questions = [
+  description: "Cloud Concepts, Core AWS Services & Networking",
+  questions : [
   {
     "questionNumber": 1,
     "questionText": "A company needs to keep sensitive data in its own data center due to compliance but would still like to deploy resources using AWS. Which Cloud deployment model does this refer to?",
@@ -795,4 +795,7 @@ const EXAM_QUESTIONS = {
     "explanation": "Correct option: S3 Lifecycle configuration. Automates transitions between storage classes and expiration. Bucket policies define permissions, Transfer Acceleration speeds uploads, CRR copies objects across regions.",
     "domain": "Technology"
   }
-]};
+]
+
+
+};
