@@ -19,7 +19,7 @@ function scoreSelection(question, sel) {
   return isCorrect ? "correct" : "incorrect";
 }
 
-function initialState() {
+export function initialState() {
   return {
     status: "welcome",
     currentQ: 0,
@@ -43,7 +43,7 @@ function submitAll(state, questions) {
   return { ...state, revealed, results, status: "submitted" };
 }
 
-function makeReducer(questions) {
+export function makeReducer(questions) {
   return function reducer(state, action) {
     switch (action.type) {
       case "START_EXAM":
