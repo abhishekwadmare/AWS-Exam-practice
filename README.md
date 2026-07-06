@@ -1,29 +1,54 @@
 # AWS Cloud Practitioner : Practice Exam Portal
 
-A static, self-hosted exam portal for AWS CLF-C02 practice tests. No server required — runs entirely in the browser. Hosted via GitHub Pages.
+A self-hosted exam portal for AWS CLF-C02 practice tests, built with React, Vite, Tailwind CSS, and
+`@material-tailwind/react` (scaffolded from the
+[material-tailwind-dashboard-react](https://github.com/creativetimofficial/material-tailwind-dashboard-react)
+template). Hosted via GitHub Pages.
 
 ## Live URL
 > `https://abhishekwadmare.github.io/AWS-Exam-practice/`
 
 ---
 
-> **Note:** This app is mid-migration from a static HTML/JS site to a React + Vite app (based on the material-tailwind-dashboard-react template). The old static version is preserved under `legacy-static/` until the migration is complete. This section will be updated fully at cutover.
+## Development
+
+```bash
+npm install
+npm run dev       # start the Vite dev server
+npm test          # run the Vitest suite (exam engine + question bank logic)
+npm run build     # production build to dist/
+npm run preview   # preview the production build locally
+```
+
+Deployment is automatic: pushing to `main` runs `.github/workflows/deploy.yml`, which builds and
+publishes `dist/` to GitHub Pages via GitHub Actions.
 
 ## Repository Structure
 
 ```
 /
 ├── src/
+│   ├── main.jsx / App.jsx / routes.jsx   ← app entry, top-level routing
+│   ├── layouts/
+│   │   ├── dashboard.jsx                  ← sidenav + navbar shell (Portal, Question Bank)
+│   │   └── exam.jsx                       ← distraction-free shell (exam-taking)
+│   ├── pages/
+│   │   ├── portal/home.jsx                ← Landing page (all 6 exams)
+│   │   ├── exam/take.jsx                  ← Exam-taking engine (welcome/in-progress/results)
+│   │   └── questions/bank.jsx             ← Question Bank browser
+│   ├── widgets/                           ← page-specific components (portal/, exam/, questions/, layout/)
+│   ├── hooks/
+│   │   ├── useExamEngine.js               ← exam state machine (timer, scoring, flagging, results)
+│   │   ├── useExamEngine.test.js
+│   │   ├── useQuestionBank.js             ← question-bank filter/search/sort state
+│   │   └── useQuestionBank.test.js
 │   └── data/
 │       ├── exams/
-│       │   ├── exam1.js        ← Questions for Exam 1
-│       │   ├── exam2.js        ← Questions for Exam 2
-│       │   ├── exam3.js        ← Questions for Exam 3
-│       │   ├── exam4.js        ← Questions for Exam 4
-│       │   ├── exam5.js        ← Questions for Exam 5
-│       │   └── exam6.js        ← Questions for Exam 6
-│       └── examRegistry.js      ← Maps exam number -> exam data module
-├── legacy-static/                ← Previous static-HTML version, kept until migration is complete
+│       │   ├── exam1.js ... exam6.js      ← Questions for each exam
+│       │   └── (see "Adding / Editing Questions" below)
+│       ├── examRegistry.js                ← Maps exam number -> exam data module
+│       └── domainColors.js                ← Shared domain -> color map
+├── .github/workflows/deploy.yml           ← build + deploy to GitHub Pages on push to main
 └── README.md
 ```
 
@@ -51,9 +76,10 @@ export const EXAM_DATA = {
 };
 ```
 
-New exams also need an entry added to `src/data/examRegistry.js`.
+New exams also need an entry added to `src/data/examRegistry.js`, and the portal's exam
+title/description copy in `src/data/examMeta.js`.
 
-- Questions with **one correct option** → rendered as radio buttons  
-- Questions with **two or more correct options** → rendered as checkboxes  
-- The `domain` field drives the end-of-exam domain breakdown chart
-
+- Questions with **one correct option** → rendered as radio buttons (auto-reveals on selection)
+- Questions with **two or more correct options** → rendered as checkboxes (requires "Check Answer";
+  scored correct only on an exact match of the full correct set)
+- The `domain` field drives the end-of-exam domain breakdown and the Question Bank's domain filter
