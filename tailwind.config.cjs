@@ -26,6 +26,17 @@ module.exports = withMT({
         sans: ["Sora", "sans-serif"],
         mono: ["IBM Plex Mono", "monospace"],
       },
+      keyframes: {
+        "timer-pulse": { "0%, 100%": { opacity: 1 }, "50%": { opacity: 0.4 } },
+        "slide-in": {
+          from: { opacity: 0, transform: "translateY(10px)" },
+          to: { opacity: 1, transform: "translateY(0)" },
+        },
+      },
+      animation: {
+        "timer-pulse": "timer-pulse 0.8s infinite",
+        "slide-in": "slide-in 0.3s ease",
+      },
     },
   },
   plugins: [],
