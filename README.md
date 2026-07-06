@@ -7,28 +7,32 @@ A static, self-hosted exam portal for AWS CLF-C02 practice tests. No server requ
 
 ---
 
+> **Note:** This app is mid-migration from a static HTML/JS site to a React + Vite app (based on the material-tailwind-dashboard-react template). The old static version is preserved under `legacy-static/` until the migration is complete. This section will be updated fully at cutover.
+
 ## Repository Structure
 
 ```
 /
-├── index.html          ← Landing page — lists all 6 exams
-├── exam.html           ← Single shared exam engine (used by all exams)
-├── data/
-│   ├── exam1.js        ← Questions for Exam 1
-│   ├── exam2.js        ← Questions for Exam 2
-│   ├── exam3.js        ← Questions for Exam 3
-│   ├── exam4.js        ← Questions for Exam 4
-│   ├── exam5.js        ← Questions for Exam 5
-│   └── exam6.js        ← Questions for Exam 6
+├── src/
+│   └── data/
+│       ├── exams/
+│       │   ├── exam1.js        ← Questions for Exam 1
+│       │   ├── exam2.js        ← Questions for Exam 2
+│       │   ├── exam3.js        ← Questions for Exam 3
+│       │   ├── exam4.js        ← Questions for Exam 4
+│       │   ├── exam5.js        ← Questions for Exam 5
+│       │   └── exam6.js        ← Questions for Exam 6
+│       └── examRegistry.js      ← Maps exam number -> exam data module
+├── legacy-static/                ← Previous static-HTML version, kept until migration is complete
 └── README.md
 ```
 
 ## Adding / Editing Questions
 
-Each `data/examN.js` file must export a single `EXAM_DATA` object:
+Each `src/data/exams/examN.js` file must export a single `EXAM_DATA` object:
 
 ```js
-const EXAM_DATA = {
+export const EXAM_DATA = {
   examNumber: 1,
   title: "Practice Exam 1",
   description: "Core AWS services and cloud concepts",
@@ -46,6 +50,8 @@ const EXAM_DATA = {
   ]
 };
 ```
+
+New exams also need an entry added to `src/data/examRegistry.js`.
 
 - Questions with **one correct option** → rendered as radio buttons  
 - Questions with **two or more correct options** → rendered as checkboxes  
