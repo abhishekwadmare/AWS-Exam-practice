@@ -1,12 +1,14 @@
-import { Routes, Route, Navigate } from "react-router-dom";
-import { Dashboard, Auth } from "@/layouts";
+import { Routes, Route } from "react-router-dom";
+import { Dashboard, ExamLayout } from "@/layouts";
+import { ExamTake } from "@/pages/exam/take";
 
 function App() {
   return (
     <Routes>
-      <Route path="/dashboard/*" element={<Dashboard />} />
-      <Route path="/auth/*" element={<Auth />} />
-      <Route path="*" element={<Navigate to="/dashboard/home" replace />} />
+      <Route path="/exam/:examId" element={<ExamLayout />}>
+        <Route index element={<ExamTake />} />
+      </Route>
+      <Route path="/*" element={<Dashboard />} />
     </Routes>
   );
 }
