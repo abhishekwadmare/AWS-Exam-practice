@@ -1,4 +1,4 @@
-var EXAM_DATA = {
+export const EXAM_DATA = {
   examNumber: 2,
   title: "Practice Test #2 - AWS Certified Cloud Practitioner",
   description: "Full practice exam with 65 questions covering AWS Cloud Concepts, Technology, Security, and Billing & Pricing.",
