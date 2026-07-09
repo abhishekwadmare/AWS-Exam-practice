@@ -31,7 +31,7 @@ export function Sidenav({ brandName, routes }) {
         </IconButton>
       </div>
       <div className="m-4">
-        {routes.map(({ layout, title, pages }, key) => (
+        {routes.map(({ title, pages }, key) => (
           <ul key={key} className="mb-4 flex flex-col gap-1">
             {title && (
               <li className="mx-3.5 mt-4 mb-2">
@@ -45,7 +45,7 @@ export function Sidenav({ brandName, routes }) {
             )}
             {pages.map(({ icon, name, path }) => (
               <li key={name}>
-                <NavLink to={`/${layout}${path}`.replace("//", "/")}>
+                <NavLink to={path}>
                   {({ isActive }) => (
                     <Button
                       variant={isActive ? "filled" : "text"}
