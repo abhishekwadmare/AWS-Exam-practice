@@ -1,23 +1,14 @@
 import { Routes, Route } from "react-router-dom";
-import { Sidenav, DashboardNavbar } from "@/widgets/layout";
 import routes from "@/routes";
 
 export function Dashboard() {
   return (
-    <div className="min-h-screen bg-aws-bg">
-      <Sidenav routes={routes} />
-      <div className="p-4 xl:ml-80">
-        <DashboardNavbar />
-        <Routes>
-          {routes.map(
-            ({ layout, pages }) =>
-              layout === "dashboard" &&
-              pages.map(({ path, element }) => (
-                <Route key={path} exact path={path} element={element} />
-              ))
-          )}
-        </Routes>
-      </div>
+    <div className="min-h-screen bg-aws-bg p-4">
+      <Routes>
+        {routes.map(({ path, element }) => (
+          <Route key={path} path={path} element={element} />
+        ))}
+      </Routes>
     </div>
   );
 }
