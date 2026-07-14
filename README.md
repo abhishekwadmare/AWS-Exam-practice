@@ -1,12 +1,20 @@
 # AWS Cloud Practitioner : Practice Exam Portal
 
 A self-hosted exam portal for AWS CLF-C02 practice tests, built with React, Vite, Tailwind CSS, and
-`@material-tailwind/react` (scaffolded from the
-[material-tailwind-dashboard-react](https://github.com/creativetimofficial/material-tailwind-dashboard-react)
-template). Hosted via GitHub Pages.
+`@material-tailwind/react`. Hosted via GitHub Pages.
 
 ## Live URL
-> `https://abhishekwadmare.github.io/AWS-Exam-practice/`
+**[abhishekwadmare.github.io/AWS-Exam-practice](https://abhishekwadmare.github.io/AWS-Exam-practice/)**
+
+## Screenshots
+
+| Portal — all 6 exams | Question Bank — 390 questions |
+|---|---|
+| ![Portal home](docs/screenshots/portal.jpg) | ![Question Bank](docs/screenshots/question-bank.jpg) |
+
+| Exam in progress |
+|---|
+| ![Exam in progress](docs/screenshots/exam-progress.jpg) |
 
 ---
 
