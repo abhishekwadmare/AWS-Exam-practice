@@ -8,7 +8,7 @@ A self-hosted exam portal for AWS CLF-C02 practice tests, built with React, Vite
 
 ## Screenshots
 
-| Portal — all 6 exams | Question Bank — 390 questions |
+| Portal — 6 Practice exams | Question Bank — 390 questions |
 |---|---|
 | ![Portal home](docs/screenshots/portal.jpg) | ![Question Bank](docs/screenshots/question-bank.jpg) |
 
